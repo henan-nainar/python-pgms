@@ -1,74 +1,61 @@
-running = True
-while running:
-    print("\n--- Menu ---")
-    print("1. Word Occurrence")
-    print("2. Character Frequency")
-    print("3. Factors of a Number")
-    print("4. Exit")
+while(True):
+    print("1.Occurence Of Word\n")
+    print("2.Each Character Frequency\n")
+    print("3.Display the factor of number\n")
+    print("4.Exit\n")
 
-    choice = input("Enter your choice: ")
+    choice=input("enter your choice:")
 
-    if choice == '1':
-        a=input("enter the string: ")
-        words=a.split()
+    if choice=='1':
+        string=input("enter the string:")
+        words=string.split()
         count_words=[]
         counts=[]
-        for s in words:
-            if s not in count_words:
+
+        for w in words:
+            if w not in count_words:
                 count=0
                 for i in words:
-                    if i==s:
+                    if i==w:
                         count+=1
-                count_words.append(s)
+                count_words.append(w)
                 counts.append(count)
-        for i in range(len(count_words)):
-             print(count_words[i],':',counts[i])
+                
+        for l in range(len(count_words)):
+            print(count_words[l],' : ',counts[l])
 
-    elif choice == '2':
-        text = input("Enter a string: ")
-        
-        char_freq = {}
-        for char in text:
-            if 'a' <= char <= 'z' or 'A' <= char <= 'Z' or '0' <= char <= '9':
-                found = False
-                for key in char_freq:
-                    if key == char:
-                        char_freq[key] += 1
-                        found = True
-                        break
-                if not found:
-                    char_freq[char] = 1
-        
-        print("Character Frequencies:")
-        for char in char_freq:
-            print(f"'{char}': {char_freq[char]}")
+    elif choice=='2':
+        words=input("enter a word:")
+        count_words=[]
+        freqcy=[]
 
-    elif choice == '3':
-        num_str = input("Enter a number to find its factors: ")
-        
-        is_valid_num = True
-        for char in num_str:
-            if not ('0' <= char <= '9'):
-                is_valid_num = False
-                break
-        
-        if is_valid_num:
-            num = int(num_str)
-            if num <= 0:
-                print("Please enter a positive integer.")
-            else:
-                print(f"Factors of {num}:")
-                factor = 1
-                while factor <= num:
-                    if num % factor == 0:
-                        print(factor)
-                    factor += 1
-        else:
-            print("Invalid input. Please enter a valid integer.")
+        for w in words:
+            if w not in count_words:
+                freq=0
+                for i in words:
+                    if i==w:
+                        freq+=1
+                count_words.append(w)
+                freqcy.append(freq)
+                
+        for l in range(len(freqcy)):
+            print(count_words[l],' : ',freqcy[l])
 
-    elif choice == '4':
-        running = False
-        print("Exiting program.")
+    elif choice=='3':
+         number = int(input("Enter a positive integer: "))
+         if number >= 0:
+            factors = []
+            for i in range(1, number + 1):
+                if number % i == 0:
+                    factors.append(i)
+         print(f"The factors of {number} are: {factors}\n")
+                    
+    elif choice=='4':
+        print("exiting the program")
+        exit()
 
-    else:
-        print("Invalid choice. Please try again.")
+else:
+    print("invalid choice")
+    
+
+        
